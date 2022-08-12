@@ -1,29 +1,29 @@
 <?php
 /**
- * Description file
- * 
+ * Для запуска парсера введите в консоли полный путь до файла parser.php
+ *
  * Php version 8.1.5
 
  * @category Components
- * @package  WordPress
- * @author   Your Name <yourname@example.com>
- * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
- * @link     https://yoursite.com
- * @since    1.0.0
+ * @package  Parser
+ * @author   Глобенко Игорь Валентинович <elepsis@bk.ru>
+ * @license  https://github.com/elepsis5 My gitHub
+ * @link     https://github.com/elepsis5/xml-parser.git
+ * @since    0.1.0.0
  */
 
 
 /**
- * Description class
+ * Класс выгрузки
  * 
  * @category Components
- * @package  WordPress
- * @author   Your Name <yourname@example.com>
- * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
- * @link     https://yoursite.com
- * @since    1.0.0
+ * @package  Parser
+ * @author   Глобенко Игорь Валентинович <elepsis@bk.ru>
+ * @license  https://github.com/elepsis5 My gitHub
+ * @link     https://github.com/elepsis5/xml-parser.git
+ * @since    0.1.0.0
  */
-class Offer
+class Unload
 {
     //подключение к бд и название таблицы
     private $_dbh;
@@ -34,7 +34,7 @@ class Offer
     public $data;
 
     /**
-     * Comment construct
+     * Получаем бд и путь до xml
      * 
      * @param object $db      Database
      * @param string $xmlPath путь xml файла
@@ -47,7 +47,11 @@ class Offer
     }
 
     /**
-     * Description func
+     * Получаем данные из xml.
+     * Валидируем.
+     * Льем в базу. 
+     * Если такая запись уже есть - обновляется. 
+     * Если новая - добавляется. 
      * 
      * @return no
      */

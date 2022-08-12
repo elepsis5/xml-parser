@@ -1,20 +1,20 @@
 <?php
 /**
- * Description
+ * Для запуска парсера введите в консоли полный путь до файла parser.php
  *
  * Php version 8.1.5
 
  * @category Components
- * @package  WordPress
- * @author   Your Name <yourname@example.com>
- * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
- * @link     https://yoursite.com
- * @since    1.0.0
+ * @package  Parser
+ * @author   Глобенко Игорь Валентинович <elepsis@bk.ru>
+ * @license  https://github.com/elepsis5 My gitHub
+ * @link     https://github.com/elepsis5/xml-parser.git
+ * @since    0.1.0.0
  */
 
 require_once 'config.php';
 require_once 'database.php';
-require_once 'offer.php';
+require_once 'unload.php';
 
 
 $path = readline("Введите путь до xml-файла: ");
@@ -25,9 +25,9 @@ echo $db ? "Подключение к базе данных...OK!\n"
     : "Ошибка при подключении к базе данных!\n";
 
 
-$offer = new Offer($db, pathCheck($path));
-$offer->pushNewOffer();
-$offer->onDelete();
+$unload = new Unload($db, pathCheck($path));
+$unload->pushNewOffer();
+$unload->onDelete();
 
 /**
  * Получаем путь к файлу от пользователя.
