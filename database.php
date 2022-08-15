@@ -38,7 +38,7 @@ class Database
      * @param string $user   parameter
      * @param string $pass   parameter
      * 
-     * @return no
+     * @return void
      */
     public function __construct($host, $dbname, $user, $pass)
     {

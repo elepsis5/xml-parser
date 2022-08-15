@@ -53,7 +53,7 @@ class Unload
      * Если такая запись уже есть - обновляется. 
      * Если новая - добавляется. 
      * 
-     * @return no
+     * @return void
      */
     public function pushNewOffer()
     {
@@ -72,8 +72,7 @@ class Unload
                 ON DUPLICATE KEY UPDATE '.implode(',', $updatingName). ';'; 
                 
                 $stmt = $this->_dbh->prepare($query);
-                $stmt->execute($fieldsVal);
-                
+                @$stmt->execute($fieldsVal);
             }
         }
         
@@ -86,6 +85,7 @@ class Unload
     public function convertXml()
     {
         $xml = simplexml_load_file($this->xmlPath);
+
         if (!$xml) {
             throw new Exception('Путь указан не верно!');
         }
@@ -139,7 +139,7 @@ class Unload
     /**
      * Удаляем записи из базы, которых нет в xml-выгрузке
      *
-     * @return no
+     * @return void
      */
     public function onDelete()
     {
